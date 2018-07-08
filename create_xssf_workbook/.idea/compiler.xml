@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="2_xssf_workbook" />
+        <module name="apache-poi-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="2_xssf_workbook" target="1.5" />
+      <module name="apache-poi-demo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
