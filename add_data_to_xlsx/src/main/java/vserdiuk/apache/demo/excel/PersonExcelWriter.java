@@ -30,49 +30,61 @@ public class PersonExcelWriter {
     }
 
     private void prepareHeader(Sheet personSheet) {
+        //create header row
         Row headerRow = personSheet.createRow(0);
 
+        //create cells
         Cell firstNameHeaderCell = headerRow.createCell(0);
-        firstNameHeaderCell.setCellValue("First name");
-
         Cell lastNameHeaderCell = headerRow.createCell(1);
-        lastNameHeaderCell.setCellValue("Last name");
-
         Cell birthdayHeaderCell = headerRow.createCell(2);
-        birthdayHeaderCell.setCellValue("Birthday");
-
         Cell emailHeaderCell = headerRow.createCell(3);
-        emailHeaderCell.setCellValue("Email");
-
         Cell phoneNumberHeaderCell = headerRow.createCell(4);
-        phoneNumberHeaderCell.setCellValue("Phone number");
-
         Cell marriedHeaderCell = headerRow.createCell(5);
+
+        //set cells values
+        firstNameHeaderCell.setCellValue("First name");
+        lastNameHeaderCell.setCellValue("Last name");
+        birthdayHeaderCell.setCellValue("Birthday");
+        emailHeaderCell.setCellValue("Email");
+        phoneNumberHeaderCell.setCellValue("Phone number");
         marriedHeaderCell.setCellValue("Married");
     }
 
     private void prapareTable(Sheet personSheet, List<Person> personList) {
         for (int i=0; i<personList.size(); i++) {
+            //create header row
             Row row = personSheet.createRow(i + 1);
 
+            //create cells
             Cell firstNameCell = row.createCell(0);
-            firstNameCell.setCellValue(personList.get(i).getFirstName());
-
             Cell lastNameCell = row.createCell(1);
-            lastNameCell.setCellValue(personList.get(i).getLastName());
-
             Cell birthdayCell = row.createCell(2);
-            birthdayCell.setCellValue(personList.get(i).getBirthday().toString());
-
             Cell emailCell = row.createCell(3);
-            emailCell.setCellValue(personList.get(i).getEmail());
-
             Cell phoneNumberCell = row.createCell(4);
-            phoneNumberCell.setCellValue(personList.get(i).getPhoneNumber());
-
             Cell marriedCell = row.createCell(5);
+
+            //set cells values
+            firstNameCell.setCellValue(personList.get(i).getFirstName());
+            lastNameCell.setCellValue(personList.get(i).getLastName());
+            birthdayCell.setCellValue(personList.get(i).getBirthday().toString());
+            emailCell.setCellValue(personList.get(i).getEmail());
+            phoneNumberCell.setCellValue(personList.get(i).getPhoneNumber());
             marriedCell.setCellValue(personList.get(i).isMarried());
         }
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
