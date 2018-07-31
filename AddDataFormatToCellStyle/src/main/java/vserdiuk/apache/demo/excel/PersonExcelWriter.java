@@ -27,7 +27,7 @@ public class PersonExcelWriter {
 
     private Workbook prepareWorkbook(List<Person> personList) {
         Workbook workbook = new XSSFWorkbook();
-        XSSFSheet personSheet = (XSSFSheet) workbook.createSheet("Persons");
+        Sheet personSheet = (XSSFSheet) workbook.createSheet("Persons");
 
         personSheet.setZoom(200); // set sheet zoom to 200 points
         prepareHeader(personSheet);
