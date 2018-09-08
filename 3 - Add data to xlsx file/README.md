@@ -1,4 +1,4 @@
-# 1 - Creating an empty .xls file
+# 3 - Adding data to .xlsx file
 
 The project shows how to add data to a .xlsx file.
 
