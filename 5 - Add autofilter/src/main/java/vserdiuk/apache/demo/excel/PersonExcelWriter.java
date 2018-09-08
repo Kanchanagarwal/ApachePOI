@@ -22,6 +22,12 @@ public class PersonExcelWriter {
         }
     }
 
+    /**
+     * The method prepares a Workbook by preparing the header row and the content area
+     *
+     * @param personList
+     * @return Workbook
+     */
     private Workbook prepareWorkbook(List<Person> personList) {
         Workbook workbook = new XSSFWorkbook();
         Sheet personSheet = workbook.createSheet("Persons");
@@ -42,6 +48,11 @@ public class PersonExcelWriter {
         return workbook;
     }
 
+    /**
+     * The method resizes columns according to a column content
+     *
+     * @param personSheet
+     */
     private void setAutoSizeColumn(Sheet personSheet) {
         int columnCount = personSheet.getRow(0).getLastCellNum()-1;
         for (int i=0; i<columnCount; i++) {
@@ -49,6 +60,11 @@ public class PersonExcelWriter {
         }
     }
 
+    /**
+     * The method prepares person sheet
+     *
+     * @param personSheet
+     */
     private void prepareHeader(Sheet personSheet) {
         //create row
         Row headerRow = personSheet.createRow(0);
@@ -81,6 +97,13 @@ public class PersonExcelWriter {
         marriedHeaderCell.setCellStyle(cellStyle);
     }
 
+    /**
+     * The method prepares person content area - lines with Person's data
+     * (First name, Last name, Birthday, Email, Phone number, Married)
+     *
+     * @param personSheet
+     * @param personList
+     */
     private void prapareTable(Sheet personSheet, List<Person> personList) {
         for (int i=0; i<personList.size(); i++) {
             //create row
@@ -115,6 +138,12 @@ public class PersonExcelWriter {
         }
     }
 
+    /**
+     * The method prepares the CellStyle for the header row
+     *
+     * @param personSheet
+     * @return
+     */
     private CellStyle getHeaderCellStyle(Sheet personSheet) {
         Font font = personSheet.getWorkbook().createFont();
         font.setBold(true); //setting font style as bold
@@ -135,6 +164,12 @@ public class PersonExcelWriter {
         return cellStyle;
     }
 
+    /**
+     * The method prepares the CellStyle for Person table content area
+     *
+     * @param personSheet
+     * @return
+     */
     private CellStyle getTableCellStyle(Sheet personSheet) {
         Font font = personSheet.getWorkbook().createFont();
         font.setItalic(true);
