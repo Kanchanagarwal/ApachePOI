@@ -29,12 +29,19 @@ public class PersonExcelWriter {
         }
     }
 
+    /**
+     * The method prepares a Workbook by preparing the header row and the content area
+     *
+     * @param personList
+     * @return Workbook
+     */
     private Workbook prepareWorkbook(List<Person> personList) {
         Workbook workbook = new XSSFWorkbook();
         XSSFSheet personSheet = (XSSFSheet) workbook.createSheet("Persons");
         XSSFSheet personSheet2 = (XSSFSheet) workbook.createSheet("Persons2");
         XSSFSheet personSheet3 = (XSSFSheet) workbook.createSheet("Persons3");
 
+        //hide Persons2 sheet
         workbook.setSheetHidden(1, true);
 
         XSSFTable table = createTable(personSheet);
@@ -61,6 +68,11 @@ public class PersonExcelWriter {
         return workbook;
     }
 
+    /**
+     * The method prepares header row
+     *
+     * @param personSheet
+     */
     private void prepareHeader(Sheet personSheet) {
         //create row
         Row headerRow = personSheet.createRow(0);
@@ -93,6 +105,13 @@ public class PersonExcelWriter {
         marriedHeaderCell.setCellStyle(cellStyle);
     }
 
+    /**
+     * The method prepares person content area - lines with Person's data
+     * (First name, Last name, Birthday, Email, Phone number, Married)
+     *
+     * @param personSheet
+     * @param personList
+     */
     private void prepareContentArea(Sheet personSheet, List<Person> personList) {
         for (int i=0; i<personList.size(); i++) {
             //create row
@@ -132,12 +151,23 @@ public class PersonExcelWriter {
         }
     }
 
+    /**
+     * The  method creates the table style
+     *
+     * @param table
+     */
     private void createTableStyle(XSSFTable table) {
         XSSFTableStyleInfo style = (XSSFTableStyleInfo) table.getStyle();
         style.setName("TableStyleMedium2");
         style.setShowRowStripes(true);
     }
 
+    /**
+     * Creates the XSSFTable with the name Person
+     *
+     * @param personSheet
+     * @return
+     */
     private XSSFTable createTable(XSSFSheet personSheet) {
         XSSFTable table = personSheet.createTable();
         table.setName("Person");
@@ -149,6 +179,12 @@ public class PersonExcelWriter {
         return table;
     }
 
+    /**
+     * The method responsible for adding column to the XSSFTable
+     *
+     * @param table
+     * @param columnAmount
+     */
     private void addColumnToTable(XSSFTable table, int columnAmount) {
         for (int i=0; i<columnAmount; i++) {
             table.addColumn();
@@ -161,6 +197,14 @@ public class PersonExcelWriter {
         table.setCellReferences(reference);
     }
 
+    /**
+     * The method creates an autrofilter for table
+     *
+     * @param workbook
+     * @param table
+     * @param columnAmount
+     * @param lastRowIndex
+     */
     private void createAutofilter(Workbook workbook, XSSFTable table, int columnAmount, int lastRowIndex) {
         AreaReference referenceFilter = workbook.getCreationHelper().createAreaReference(
                 new CellReference(0, 0), new CellReference(lastRowIndex, columnAmount-1));
@@ -169,6 +213,11 @@ public class PersonExcelWriter {
         table.getCTTable().setAutoFilter(autoFilter);
     }
 
+    /**
+     * The method resizes columns according to a column content
+     *
+     * @param personSheet
+     */
     private void setAutoSizeColumn(Sheet personSheet) {
         int columnCount = personSheet.getRow(0).getLastCellNum()-1;
         for (int i=0; i<columnCount; i++) {
@@ -176,6 +225,12 @@ public class PersonExcelWriter {
         }
     }
 
+    /**
+     * The method prepares the CellStyle for the header row
+     *
+     * @param personSheet
+     * @return
+     */
     private CellStyle getHeaderCellStyle(Sheet personSheet) {
         Font font = personSheet.getWorkbook().createFont();
         font.setBold(true); //setting font style as bold
@@ -194,6 +249,12 @@ public class PersonExcelWriter {
         return cellStyle;
     }
 
+    /**
+     * The method prepares the common CellStyle for Person table content area
+     *
+     * @param personSheet
+     * @return
+     */
     private CellStyle getCommontCellStyle(Sheet personSheet) {
         CellStyle cellStyle = personSheet.getWorkbook().createCellStyle();
 
@@ -214,6 +275,12 @@ public class PersonExcelWriter {
         return cellStyle;
     }
 
+    /**
+     * The method prepares the CellStyle for text cells
+     *
+     * @param personSheet
+     * @return
+     */
     private CellStyle getTextStyle(Sheet personSheet) {
         CellStyle cellStyle = getCommontCellStyle(personSheet);
         DataFormat dataFormat = personSheet.getWorkbook().createDataFormat();
@@ -221,6 +288,12 @@ public class PersonExcelWriter {
         return cellStyle;
     }
 
+    /**
+     * The method prepares the CellStyle for date cells according to MMMM dd, yyyy mask
+     *
+     * @param personSheet
+     * @return
+     */
     private CellStyle getDateStyle(Sheet personSheet) {
         CellStyle cellStyle = getCommontCellStyle(personSheet);
         CreationHelper createHelper = personSheet.getWorkbook().
@@ -230,6 +303,12 @@ public class PersonExcelWriter {
         return cellStyle;
     }
 
+    /**
+     * The method prepares the CellStyle for phone number cells according to (###) ###-#### mask
+     *
+     * @param personSheet
+     * @return
+     */
     private CellStyle getPhoneStyle(Sheet personSheet) {
         CellStyle cellStyle = getCommontCellStyle(personSheet);
         CreationHelper createHelper = personSheet.getWorkbook().getCreationHelper();
@@ -239,13 +318,3 @@ public class PersonExcelWriter {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
