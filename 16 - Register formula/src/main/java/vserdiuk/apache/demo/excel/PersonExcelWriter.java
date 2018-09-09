@@ -173,6 +173,9 @@ public class PersonExcelWriter {
         return yearArray;
     }
 
+    /**
+     * Register unsupported formula 
+     */
     private void registerFunction() {
         FunctionEval.registerFunction("DATEDIF", new Function() {
 
