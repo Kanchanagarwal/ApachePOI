@@ -13,4 +13,4 @@ The apache poi provides the protect sheet feature. The goal of the feature is to
 ```
 ## Result
 
-The Persons sheet has special lock mark and it means that the sheet is protected. Let’s try to modify some cell. You can see the popup message that inform us the sheet is protected and we have to input the password if we want to modify data. For doing this we need to click the unprotect sheet in a context menu, input the password and we can modify data.
+The "Persons" sheet has a special lock mark and it means that the sheet is protected. When a user tries to modify the sheet the popup message is shown that informs a user that the sheet is protected and we have to input the password to modify data. 
