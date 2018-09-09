@@ -64,7 +64,7 @@ public class PersonExcelWriter {
     }
 
     /**
-     * The method prepares person sheet
+     * The method prepares header row
      *
      * @param personSheet
      */
