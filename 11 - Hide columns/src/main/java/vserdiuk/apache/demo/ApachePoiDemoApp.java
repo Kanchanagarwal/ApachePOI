@@ -40,7 +40,7 @@ public class ApachePoiDemoApp {
         person1.setBirthday(LocalDate.parse("1990-05-10"));
         person1.setEmail("john.smith@email.com");
         person1.setPhoneNumber(123456789l);
-        person1 .setMarried(true);
+        person1.setMarried(true);
 
         Person person2 = new Person();
         person2.setFirstName("Mary");
