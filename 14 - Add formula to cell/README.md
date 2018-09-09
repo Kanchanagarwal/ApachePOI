@@ -6,8 +6,9 @@ The Excel formulas is a powerful tool for manage data in the workbook. The proje
 
 There are 2 Excel formulas in the example: DATEDIF, IF.
 
-DATEDIF - calculates the number of days, months, or years between two dates (Syntax: **DATEDIF(start_date,end_date,unit)**).
-IF - The IF function is one of the most popular functions in Excel, and it allows you to make logical comparisons between a value and what you expect (Syntax: **IF(logical_test, value_if_true, [value_if_false])**).
+* DATEDIF - calculates the number of days, months, or years between two dates (Syntax: **DATEDIF(start_date,end_date,unit)**).
+
+* IF - The IF function is one of the most popular functions in Excel, and it allows you to make logical comparisons between a value and what you expect (Syntax: **IF(logical_test, value_if_true, [value_if_false])**).
 
 ## Dependencies
 
